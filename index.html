@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ST-Console</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/console.css">
+</head>
+<body>
+  <div id="app">
+    <header id="hdr"></header>
+    <nav id="nav"></nav>
+    <main id="main"></main>
+    <aside id="insp"></aside>
+    <footer id="log">
+      <div class="log-head">
+        <span class="panel-t">REQUEST LOG</span>
+        <span class="dim" id="log-count"></span>
+        <span class="spacer"></span>
+        <label class="dim"><input type="checkbox" id="log-hide-get"> hide GET</label>
+        <button class="btn sm" id="log-clear" type="button">CLEAR</button>
+      </div>
+      <div id="log-lines"></div>
+    </footer>
+  </div>
+  <noscript>ST-Console requires JavaScript.</noscript>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
