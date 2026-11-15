@@ -38,7 +38,10 @@ export function authView() {
 
   const tok = h('textarea', { name: 'tok', rows: 3, placeholder: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9…', spellcheck: 'false', class: 'mono' });
   out.push(panel('CONNECT // existing agent token', [
-    field('AGENT TOKEN', tok, 'Bearer JWT returned by POST /register. Invalidated by every server reset.'),
+    h('p', { class: 'dim' }, 'Created your agent (name + faction) on ',
+      h('a', { href: 'https://my.spacetraders.io', target: '_blank', rel: 'noopener' }, 'my.spacetraders.io'),
+      '? Paste that agent\'s token here. You don\'t need the REGISTER form below.'),
+    field('AGENT TOKEN', tok, 'Plays one agent. Invalidated by every weekly server reset.'),
     h('div', { class: 'row' }, act('CONNECT', async () => {
       const t = tok.value.trim();
       if (!t) throw new Error('agent token required');
@@ -62,9 +65,10 @@ export function authView() {
   const email = h('input', { name: 'reg-email', type: 'email', class: 'w-wide', placeholder: 'optional — only for reserved call signs' });
 
   out.push(panel('REGISTER // new agent', [
-    h('p', { class: 'dim' }, 'Create an account at ', h('a', { href: 'https://my.spacetraders.io', target: '_blank', rel: 'noopener' }, 'my.spacetraders.io'),
-      ' and generate an account token. It is used only for this request; the API returns a new agent token.'),
-    field('ACCOUNT TOKEN', acct),
+    h('p', { class: 'dim' }, 'Or create the agent here instead: generate an ACCOUNT token in your account settings on ',
+      h('a', { href: 'https://my.spacetraders.io', target: '_blank', rel: 'noopener' }, 'my.spacetraders.io'),
+      ' (not an agent token), then choose a name and faction below. You get back a new agent token to play with.'),
+    field('ACCOUNT TOKEN', acct, 'Identifies you as a player and survives server resets. Only used to create agents.'),
     h('label', { class: 'row dim' }, remember, ' remember account token in this browser (it survives server resets)'),
     field('AGENT SYMBOL', sym),
     field('FACTION', fac, factions.length ? `${factions.length} recruiting factions` : 'loading factions…'),

@@ -15,8 +15,10 @@ python3 -m http.server 8000
 
 ## Play
 
-1. **Session**: paste an existing agent token, or register a new agent with an account token from
-   [my.spacetraders.io](https://my.spacetraders.io). The agent token is stored in `localStorage`.
+1. **Session**: there are two kinds of token. An *agent token* plays one agent; an *account token*
+   identifies you as a player and is only used to create agents. Either create the agent (name + faction)
+   on [my.spacetraders.io](https://my.spacetraders.io) and paste its agent token into CONNECT, or generate
+   an account token there and register the agent here with REGISTER. The agent token is stored in `localStorage`.
    Servers reset weekly. After a reset the token gets a 401 and the client sends you back to registration.
 2. **Contracts**: accept the starting contract.
 3. **Ship**: navigate to an asteroid (`GO` in the waypoint table), `EXTRACT`/`SURVEY`, query the market,
